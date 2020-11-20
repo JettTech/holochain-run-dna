@@ -31,5 +31,5 @@ holochain-run-dna <AppId> <PORT> [DNA_PATH, DNA_PATH...]
 To change the debug level:
 
 ```bash
-RUST_LOG=debug holochain-run-dna [DNA_PATH, DNA_PATH...]
+RUST_LOG=debug holochain-run-dna <AppId> <PORT> [DNA_PATH, DNA_PATH...]
 ```
