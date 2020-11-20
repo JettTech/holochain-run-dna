@@ -25,7 +25,7 @@ If the holochain conductor crashes with a problem related to `lair-keystore`, un
 ## Usage
 
 ```bash
-holochain-run-dna [DNA_PATH, DNA_PATH...]
+holochain-run-dna <AppId> <PORT> [DNA_PATH, DNA_PATH...]
 ```
 
 To change the debug level:
