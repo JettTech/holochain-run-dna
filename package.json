@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/holochain-open-dev/holochain-run-dna#readme",
   "dependencies": {
-    "@holochain/conductor-api": "0.0.1-dev.10",
+    "@holochain/conductor-api": "holochain/holochain-conductor-api#breaking-interface-changes",
     "fs": "0.0.1-security",
     "tmp": "^0.2.1"
   },
