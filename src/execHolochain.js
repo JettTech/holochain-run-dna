@@ -1,7 +1,7 @@
 import tmp from "tmp";
 import child_process from "child_process";
 import fs from "fs";
-import { ADMIN_PORT } from "./constants";
+import { ADMIN_PORT_1 } from "./constants"; // ADMIN_PORT_2,
 import { sleep } from "./utils";
 
 function createConfigFile() {
@@ -15,12 +15,12 @@ signing_service_uri: ~
 encryption_service_uri: ~
 decryption_service_uri: ~
 dpki: ~
-keystore_path: ~
+keystore_path: ${dbDirectory.name}/keystore
 passphrase_service: ~
 admin_interfaces: 
     - driver:
         type: websocket
-        port: ${ADMIN_PORT}  
+        port: ${ADMIN_PORT_1}  
 network:
     bootstrap_service: https://bootstrap.holo.host
     transport_pool:
