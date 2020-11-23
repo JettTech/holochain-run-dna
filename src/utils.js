@@ -11,8 +11,8 @@ function getDnaPath(provisionalPath) {
 }
 
 export function getAppToInstall() {
-  const installedAppId = process.argv[2];
-  console.log('INSTALLED_APP_ID : ', installedAppId);
+  const appId = process.argv[2];
+  console.log('APP_ID : ', appId);
 
   let appInterfacePort = 8888;
   let dnaArgs, port
@@ -36,7 +36,7 @@ export function getAppToInstall() {
   console.log('APP_INTERFACE_PORT: ', appInterfacePort);
   console.log('DNAs to install for App: ', dnaArgs);
 
-  if (!installedAppId || dnaArgs.length === 0)
+  if (!appId || dnaArgs.length === 0)
     throw new Error(`
   Bad input!
   USAGE: npx @holochain-open-dev/holochain-run-dna <APP_ID> (PORT) [DNA_PATH, DNA_PATH...]
@@ -52,7 +52,7 @@ export function getAppToInstall() {
   });
 
   return {
-    installedAppId,
+    appId,
     port,
     dnas
   }

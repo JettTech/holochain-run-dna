@@ -8,7 +8,7 @@ async function execAndInstall(appToInstall) {
 
   await sleep(100);
 
-  installApp(appToInstall.port, appToInstall.dnas, appToInstall.installedAppId);
+  installApp(appToInstall.port, appToInstall.dnas, appToInstall.appId);
 }
 
 try {
