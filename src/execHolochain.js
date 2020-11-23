@@ -1,7 +1,7 @@
 import tmp from "tmp";
 import child_process from "child_process";
 import fs from "fs";
-import { ADMIN_PORT_1 } from "./constants"; // ADMIN_PORT_2,
+import { ADMIN_PORT_1, PROXY_URL } from "./constants"; // ADMIN_PORT_2,
 import { sleep } from "./utils";
 
 function createConfigFile() {
@@ -29,7 +29,7 @@ network:
           type: quic
         proxy_config:
           type: remote_proxy_client
-          proxy_url: kitsune-proxy://CIW6PxKxsPPlcuvUCbMcKwUpaMSmB7kLD8xyyj4mqcw/kitsune-quic/h/proxy.holochain.org/p/5778/--`;
+          proxy_url: ${PROXY_URL}`;
 
   const configFile = tmp.fileSync({});
 
