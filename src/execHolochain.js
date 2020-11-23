@@ -15,7 +15,7 @@ signing_service_uri: ~
 encryption_service_uri: ~
 decryption_service_uri: ~
 dpki: ~
-keystore_path: ${dbDirectory.name}/keystore
+keystore_path: "${dbDirectory.name}/keystore"
 passphrase_service: ~
 admin_interfaces:
     - driver:
