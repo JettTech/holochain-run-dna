@@ -9,7 +9,7 @@ function createConfigFile() {
 
   const configFileContents = `
 ---
-environment_path: ${dbDirectory.name}
+environment_path: "${dbDirectory.name}"
 use_dangerous_test_keystore: false
 signing_service_uri: ~
 encryption_service_uri: ~
@@ -29,7 +29,7 @@ network:
           type: quic
         proxy_config:
           type: remote_proxy_client
-          proxy_url: ${PROXY_URL}`;
+          proxy_url: "${PROXY_URL}"`;
 
   const configFile = tmp.fileSync({});
 
