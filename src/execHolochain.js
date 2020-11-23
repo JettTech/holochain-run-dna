@@ -17,14 +17,19 @@ decryption_service_uri: ~
 dpki: ~
 keystore_path: ${dbDirectory.name}/keystore
 passphrase_service: ~
-admin_interfaces: 
+admin_interfaces:
     - driver:
         type: websocket
-        port: ${ADMIN_PORT_1}  
+        port: ${ADMIN_PORT_1}
 network:
     bootstrap_service: https://bootstrap.holo.host
     transport_pool:
-      - type: quic`;
+      - type: proxy
+        sub_transport:
+          type: quic
+        proxy_config:
+          type: remote_proxy_client
+          proxy_url: kitsune-proxy://CIW6PxKxsPPlcuvUCbMcKwUpaMSmB7kLD8xyyj4mqcw/kitsune-quic/h/proxy.holochain.org/p/5778/--`;
 
   const configFile = tmp.fileSync({});
 
@@ -54,4 +59,6 @@ export async function execHolochain() {
       RUST_LOG: process.env.RUST_LOG ? process.env.RUST_LOG : "info",
     },
   });
+  await sleep(500);
+
 }
