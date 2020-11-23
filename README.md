@@ -6,7 +6,7 @@ This tool:
 
 - Executes the `holochain` command with default debug level on `info`
 - Uses a temporary database that will be cleaned after exit
-- Installs the given DNAs in the same app, named `test-app`, and listening to 8888.
+- Installs the given DNAs in the same app, named by the provided AppId arg and listening to the optionally provided Port (defaults to 8888).
 
 If more configuration parameters are wanted, PRs and issues are welcomed at https://github.com/holochain-open-dev/holochain-run-dna.
 
@@ -25,11 +25,11 @@ If the holochain conductor crashes with a problem related to `lair-keystore`, un
 ## Usage
 
 ```bash
-holochain-run-dna [DNA_PATH, DNA_PATH...]
+holochain-run-dna <AppId> <PORT> [DNA_PATH, DNA_PATH...]
 ```
 
 To change the debug level:
 
 ```bash
-RUST_LOG=debug holochain-run-dna [DNA_PATH, DNA_PATH...]
+RUST_LOG=debug holochain-run-dna <AppId> <PORT> [DNA_PATH, DNA_PATH...]
 ```
