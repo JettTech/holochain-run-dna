@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/holochain-open-dev/holochain-run-dna#readme",
   "dependencies": {
-    "@holochain/conductor-api": "holochain/holochain-conductor-api#breaking-interface-changes",
+    "@holochain/conductor-api": "0.0.1-dev.12",
     "fs": "0.0.1-security",
     "tmp": "^0.2.1"
   },
@@ -30,4 +30,4 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }
-}
+}yran
