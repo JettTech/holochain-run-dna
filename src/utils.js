@@ -39,7 +39,7 @@ export function getAppToInstall() {
   if (!installedAppId || dnaArgs.length === 0)
     throw new Error(`
   Bad input!
-  USAGE: npx @holochain-open-dev/holochain-run-dna <APP_ID> (PORT) [DNA_PATH, DNA_PATH...]
+  USAGE: npx @holochain-open-dev/holochain-run-dna <INSTALLED_APP_ID> (PORT) [DNA_PATH, DNA_PATH...]
 `);
 
   const dnas = dnaArgs.map((arg) => {

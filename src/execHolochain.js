@@ -4,18 +4,28 @@ import fs from "fs";
 import { ADMIN_PORT_1, PROXY_URL } from "./constants"; // ADMIN_PORT_2,
 import { sleep } from "./utils";
 
-function createConfigFile() {
-  const dbDirectory = tmp.dirSync({});
+function createConfigFile(dirName) {
+  if (!dirName) {
+    const dbDirectory = tmp.dirSync({});
+    dirName = dbDirectory.name;
+  }
+
+  let configExists = false
+  const configFileName = `${dirName}/config.yaml`;
+
+  if (fs.existsSync(configFileName)) {
+    return [configFileName, false]
+  }
 
   const configFileContents = `
 ---
-environment_path: "${dbDirectory.name}"
+environment_path: "${dirName}"
 use_dangerous_test_keystore: false
 signing_service_uri: ~
 encryption_service_uri: ~
 decryption_service_uri: ~
 dpki: ~
-keystore_path: "${dbDirectory.name}/keystore"
+keystore_path: "${dirName}/keystore"
 passphrase_service: ~
 admin_interfaces:
     - driver:
@@ -31,15 +41,14 @@ network:
           type: remote_proxy_client
           proxy_url: "${PROXY_URL}"`;
 
-  const configFile = tmp.fileSync({});
 
-  fs.writeFileSync(configFile.name, configFileContents);
+  fs.writeFileSync(configFileName, configFileContents);
 
-  return configFile.name;
+  return [configFileName, true];
 }
 
 export async function execHolochain() {
-  const configFilePath = createConfigFile();
+  const [configFilePath, configCreated] = createConfigFile(process.env.RUN_DIR);
 
   console.log('\nConfig File Path : ', configFilePath);
 
@@ -60,5 +69,5 @@ export async function execHolochain() {
     },
   });
   await sleep(500);
-
+  return configCreated;
 }
